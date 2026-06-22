@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px 20px;
+        background: #f9f9f9;
+    }
+
+    .card {
+        background-color: #ddf0f0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        color: #008080;
+        margin: 10px 0;
+    }
+
+    .card p {
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .card button {
+        background-color: #008080;
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .card button:hover {
+        background-color: #006666;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<div class="products">
+    {% for i in a %}
+    <div class="card">
+        <img src="{{ i.product_image.url }}">
+        <h3>{{ i.product_name }}</h3>
+        <p>₹{{ i.product_price }}</p>
+        <a href="{% url 'productdetail' i.id %}">
+            <button>View Product</button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

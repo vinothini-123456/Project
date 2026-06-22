@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .signup-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e6f7f7;
+    }
+
+    .signup-box {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 12px;
+        width: 320px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .signup-box h2 {
+        margin-bottom: 20px;
+        color: #008080;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .input-group label {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+
+    .input-group input:focus {
+        border-color: #008080;
+    }
+
+    .signup-box button {
+        width: 100%;
+        padding: 10px;
+        background: #008080;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .signup-box button:hover {
+        background: #006666;
+    }
+</style>
+
+<div class="signup-container">
+    <form action="{% url 'signup' %}" method="post" class="signup-box">
+        {% csrf_token %}
+        <h2>Sign Up</h2>
+
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+        </div>
+
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" placeholder="Confirm password" required>
+        </div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+{% endblock %}

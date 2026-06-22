@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .success-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e6f7f7;
+    }
+
+    .card {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        width: 320px;
+    }
+
+    .card h1 {
+        color: #008080;
+        margin-bottom: 20px;
+    }
+
+    .card button {
+        padding: 10px 20px;
+        background: #008080;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .card button:hover {
+        background: #006666;
+    }
+</style>
+
+<div class="success-container">
+    <div class="card">
+        <h1>Verification Success</h1>
+        <a href="/">
+            <button>Done</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

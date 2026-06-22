@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .success-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e6f7f7;
+    }
+
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        width: 350px;
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .checkmark {
+        font-size: 60px;
+        color: #008080;
+        animation: pop 0.5s ease;
+    }
+
+    h2 {
+        margin-top: 15px;
+        color: #008080;
+    }
+
+    p {
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #008080;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #006666;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="success-container">
+    <div class="card">
+        <div class="checkmark">✔</div>
+        <h2>Order Placed Successfully</h2>
+        <p>Your order has been placed successfully.</p>
+        <a href="{% url 'products' %}">
+            <button>Continue Shopping</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

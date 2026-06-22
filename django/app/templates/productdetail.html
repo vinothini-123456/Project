@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 20px;
+        flex-wrap: wrap;
+        background: #f9f9f9;
+    }
+
+    .detail img {
+        width: 350px;
+        height: 350px;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product {
+        max-width: 400px;
+    }
+
+    .product h1 {
+        color: #008080;
+        margin-bottom: 10px;
+    }
+
+    .product p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .product .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .product button {
+        margin-top: 15px;
+        background-color: #008080;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .product button:hover {
+        background-color: #006666;
+    }
+</style>
+
+<div class="detail">
+
+    <img src="{{ b.product_image.url }}">
+
+    <div class="product">
+        <h1>{{ b.product_name }}</h1>
+        <p class="price">₹{{ b.product_price }}</p>
+        <p>{{ b.product_desc }}</p>
+
+<form action="{% url 'buy_product' b.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Buy</button>
+</form>
+
+    </div>
+
+</div>
+
+{% endblock %}

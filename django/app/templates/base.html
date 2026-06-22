@@ -1,0 +1,72 @@
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #5ec5c5;
+        padding: 20px 30px;
+    }
+
+    .navbar h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #222;
+    }
+
+    .navbar ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar li {
+        list-style: none;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: #222;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .navbar a:hover {
+        color: white;
+    }
+
+    .btn-nav {
+        padding: 6px 14px;
+        background: #008080;
+        color: white !important;
+        border-radius: 5px;
+    }
+
+    .btn-nav:hover {
+        background: #006666;
+    }
+
+
+</style>
+
+<div class="navbar">
+    <h1>Grocery Store</h1>
+
+    <ul>
+        {% if request.user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'products' %}">Products</a></li>
+            <li><a href="{% url 'logout' %}" class="btn-nav">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}" class="btn-nav">Login</a></li>
+            <li><a href="{% url 'signup' %}" class="btn-nav">Signup</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+{% block body %}
+{% endblock %}
